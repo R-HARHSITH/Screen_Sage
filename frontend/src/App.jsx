@@ -82,7 +82,8 @@ function App() {
         <Route path="/" element={
           <div>
             <h1>Home Page</h1>
-            <VideoLink lessonId="0f97e39c-2689-46f6-bd4c-98887f96e59a" />
+            {/* <VideoLink lessonId="0f97e39c-2689-46f6-bd4c-98887f96e59a" /> */}
+            <VideoLink lessonId="60781dff-2fa6-42ac-a071-def989222541" />
           </div>
         } />
       <Route path='/*' element={<NotFoundPage />} />
