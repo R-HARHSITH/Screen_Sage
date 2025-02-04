@@ -35,12 +35,6 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   next();
 });
-if (ENV_VARS.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "frontend", "dist")));
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
-  });
-}
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -116,6 +110,13 @@ app.get("/watch/:lessonId", (req, res) => {
     videoUrl,
   });
 });
+
+if (ENV_VARS.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/dist")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`Server started at http://localhost:${PORT}`);
