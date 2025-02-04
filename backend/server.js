@@ -80,7 +80,7 @@ app.post("/backend/uploads", upload.single("file"), (req, res) => {
       return res.status(500).json({ message: "Error processing video" });
     }
 
-    const videoUrl = `http://screen-sage.onrender.com/backend/uploads/courses/${lessonId}/index.m3u8`;
+    const videoUrl = `http://localhost:${PORT}/backend/uploads/courses/${lessonId}/index.m3u8`;
 
     videos[lessonId] = {
       videoUrl,
