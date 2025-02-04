@@ -28,9 +28,9 @@ if (!fs.existsSync(uploadDir)) {
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: ["http://localhost:5174"], credentials: true }));
+app.use(cors({ origin: ["http://localhost:5174","*"], credentials: true }));
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", req.headers.origin,"*");
+  res.header("Access-Control-Allow-Origin","*"); //req.headers.origin instead of *
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   next();
@@ -59,7 +59,7 @@ app.use('/backend/uploads/courses', (req, res, next) => {
   res.setHeader('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept');
   next();
 });
-
+// till here
 
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/movie", movieRoutes);
@@ -92,7 +92,9 @@ app.post("/backend/uploads", upload.single("file"), (req, res) => {
       return res.status(500).json({ message: "Error processing video" });
     }
 
-    const videoUrl = `http://localhost:${PORT}/backend/uploads/courses/${lessonId}/index.m3u8`;
+    // const videoUrl = `http://localhost:${PORT}/backend/uploads/courses/${lessonId}/index.m3u8`;
+    const videoUrl = `${req.protocol}://${req.get('host')}/backend/uploads/courses/${lessonId}/index.m3u8`;
+
 
     videos[lessonId] = {
       videoUrl,
