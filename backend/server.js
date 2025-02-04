@@ -30,7 +30,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({ origin: ["http://localhost:5174"], credentials: true }));
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", req.headers.origin);
+  res.header("Access-Control-Allow-Origin", req.headers.origin,"*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   next();
@@ -48,6 +48,18 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 app.use(express.urlencoded({ extended: true }));
 app.use("/backend/uploads", express.static(uploadDir));
+// added here
+app.use('/backend/uploads/courses', (req, res, next) => {
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
+  res.setHeader('Surrogate-Control', 'no-store');
+  res.setHeader('Access-Control-Allow-Origin', '*');  // Or your domain for security
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept');
+  next();
+});
+
 
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/movie", movieRoutes);
