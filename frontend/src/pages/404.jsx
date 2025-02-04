@@ -8,7 +8,7 @@ const NotFoundPage = () => {
 		>
 			<header className='absolute top-0 left-0 p-4 bg-black w-full '>
 				<Link to={"/"}>
-					<img src='/netflix-logo.png' alt='Netflix' className='h-8' />
+					<h2>ScreenSage</h2>
 				</Link>
 			</header>
 			<main className='text-center error-page--content z-10'>
@@ -17,7 +17,7 @@ const NotFoundPage = () => {
 					Sorry, we can't find that page. You'll find lots to explore on the home page.
 				</p>
 				<Link to={"/"} className='bg-white text-black py-2 px-4 rounded'>
-					Netflix Home
+					ScreenSage Home
 				</Link>
 			</main>
 		</div>

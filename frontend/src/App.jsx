@@ -24,7 +24,7 @@ function App() {
   const { user, isCheckingAuth, authCheck } = useAuthStore();
   const [count, setCount] = useState(0)
   const playerRef = useRef(null);
-  const videoLink = "/api/backend/uploads/courses/60781dff-2fa6-42ac-a071-def989222541/index.m3u8";
+  const videoLink = "http://localhost:5000/backend/uploads/courses/60781dff-2fa6-42ac-a071-def989222541/index.m3u8";
 
   useEffect(() => {
     authCheck();
@@ -42,7 +42,7 @@ function App() {
     tracks: [
       {
         kind: "subtitles",
-        src: "/api/backend/uploads/courses/your-subtitles.vtt",
+        src: "http://localhost:5000/backend/uploads/courses/your-subtitles.vtt",
         srclang: "en",
         label: "English",
         default: true
