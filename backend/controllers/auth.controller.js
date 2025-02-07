@@ -272,11 +272,12 @@ export async function login(req, res) {
 export async function logout(req, res) {
 	try {
 		// Clear the token cookie
-		res.cookie("jwt", "", {
-			maxAge: 0,
-			httpOnly: true,
-			sameSite: "strict",
-		});
+		res.clearCookie("jwt-screensage");
+		// res.cookie("jwt", "", {
+		// 	maxAge: 0,
+		// 	httpOnly: true,
+		// 	sameSite: "strict",
+		// });
 		res.status(200).json({ message: "Logged out successfully" });
 	} catch (error) {
 		console.log("Error in logout controller:", error.message);
