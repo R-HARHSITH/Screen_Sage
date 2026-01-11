@@ -27,7 +27,7 @@ A full-stack streaming platform for discovering, searching, and watching movies 
 
 ---
 
-## 🛠️ Tech Stack
+<!-- ## 🛠️ Tech Stack
 
 ### Frontend
 | Technology | Purpose |
@@ -61,7 +61,7 @@ A full-stack streaming platform for discovering, searching, and watching movies 
 - **TMDB API** - Movie and TV show data
 - **HLS Streaming** - Video delivery format
 
----
+--- -->
 
 ## 📂 Project Structure
 
@@ -135,6 +135,7 @@ screensage/
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js (v18 or higher)
 - MongoDB Atlas account
 - TMDB API key (get from [TMDB](https://www.themoviedb.org/settings/api))
@@ -143,6 +144,7 @@ screensage/
 ### Installation
 
 1. **Clone the repository**
+
 ```bash
 git clone <repository-url>
 cd screensage
@@ -151,6 +153,7 @@ cd screensage
 2. **Setup Environment Variables**
 
 Create a `.env` file in the root directory:
+
 ```env
 # Backend
 PORT=5000
@@ -167,6 +170,7 @@ VITE_API_BASE_URL=http://localhost:5000
 ```
 
 3. **Install Dependencies**
+
 ```bash
 # Install root dependencies
 npm install
@@ -181,11 +185,13 @@ npm install --prefix frontend
 4. **Run the Application**
 
 Development mode:
+
 ```bash
 npm run dev
 ```
 
 Production mode:
+
 ```bash
 npm run build
 npm start
@@ -193,65 +199,30 @@ npm start
 
 ---
 
-## 📖 API Endpoints
-
-### Authentication Routes
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/auth/signup` | Register new user |
-| POST | `/api/auth/login` | Login user |
-| POST | `/api/auth/logout` | Logout user |
-| GET | `/api/auth/user` | Get current user info |
-
-### Movie Routes
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/movies/trending` | Get trending movies |
-| GET | `/api/movies/:id` | Get movie details |
-| GET | `/api/movies/genre/:genre` | Get movies by genre |
-
-### TV Show Routes
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/tv/trending` | Get trending TV shows |
-| GET | `/api/tv/:id` | Get TV show details |
-| GET | `/api/tv/genre/:genre` | Get TV shows by genre |
-
-### Search Routes
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/search` | Search movies/shows |
-| GET | `/api/search/history` | Get search history |
-
-### Watchlist Routes
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/watchlist` | Get user's watchlist |
-| POST | `/api/watchlist/add` | Add to watchlist |
-| DELETE | `/api/watchlist/remove/:id` | Remove from watchlist |
-
----
-
 ## 🔑 Key Features Explained
 
 ### 🔐 Authentication Flow
+
 - Users can signup with email and password
 - Passwords are hashed using bcryptjs
 - JWT tokens are issued upon login and stored in cookies
 - Protected routes require valid JWT tokens
 
 ### 🎬 Content Discovery
+
 - Integrates with TMDB API for real-time movie and TV show data
 - Browse trending content, search by genre
 - Advanced search functionality with filters
 
 ### 📺 Video Streaming
+
 - HLS (HTTP Live Streaming) format for reliable playback
 - Video segments stored in organized directory structure
 - Support for multiple quality options
 - Smooth streaming with buffering capabilities
 
 ### 📚 Watchlist Management
+
 - Add/remove movies and shows from watchlist
 - Persistent storage in MongoDB
 - Quick access from user profile
@@ -271,6 +242,7 @@ npm start
 ## 📦 Scripts
 
 ### Root Level
+
 ```bash
 npm run dev        # Start development server
 npm start          # Start production server
@@ -278,6 +250,7 @@ npm run build      # Build entire project
 ```
 
 ### Frontend
+
 ```bash
 npm run dev        # Start Vite dev server
 npm run build      # Build for production
@@ -286,6 +259,7 @@ npm run preview    # Preview production build
 ```
 
 ### Backend
+
 Managed via root scripts with nodemon for hot reload in development
 
 ---
@@ -293,43 +267,18 @@ Managed via root scripts with nodemon for hot reload in development
 ## 🌐 Environment Configuration
 
 ### Development
+
 ```
 NODE_ENV=development
 ```
 
 ### Production
+
 ```
 NODE_ENV=production
 ```
 
 Ensure all required environment variables are set in `.env` file before running the application.
-
----
-
-## 📝 Database Schema
-
-### User Model
-```javascript
-{
-  _id: ObjectId,
-  email: String (unique),
-  password: String (hashed),
-  username: String,
-  createdAt: Date,
-  updatedAt: Date
-}
-```
-
-### Watchlist Model
-```javascript
-{
-  _id: ObjectId,
-  userId: ObjectId (ref: User),
-  contentId: String,
-  contentType: String (movie/tv),
-  addedAt: Date
-}
-```
 
 ---
 
@@ -373,16 +322,6 @@ This project is licensed under the ISC License - see the [LICENSE](LICENSE) file
 - [ ] Download for offline viewing
 
 ---
-
-## 📞 Support
-
-For support, please open an issue in the repository or contact the development team.
-
----
-
-<div align="center">
-
-**Made with ❤️ by the Screensage Team**
 
 ⭐ If you find this project helpful, please consider giving it a star!
 
